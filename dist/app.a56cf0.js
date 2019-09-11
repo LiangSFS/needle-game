@@ -4172,7 +4172,7 @@ module.exports = {
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
-/*! exports provided: default */
+/*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4181,16 +4181,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _css_needle_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./css/needle.css */ "./src/css/needle.css");
 /* harmony import */ var _css_needle_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_css_needle_css__WEBPACK_IMPORTED_MODULE_1__);
 
+ //export default Needle;
 
-/* harmony default export */ __webpack_exports__["default"] = (_needle_js__WEBPACK_IMPORTED_MODULE_0__["default"]); //let needle_game = new Needle("#needle_game", {
-// canvasWidth: 600,
-// canvasHeight: 400,
-// passNum: 6
-//});
-//
-//
-//needle_game.init();
-////console.log(needle_game);
+var needle_game = new _needle_js__WEBPACK_IMPORTED_MODULE_0__["default"]("#needle_game", {
+  canvasWidth: 600,
+  canvasHeight: 400,
+  passNum: 6
+});
+needle_game.init(); ////console.log(needle_game);
 
 /***/ }),
 
@@ -4719,4 +4717,4 @@ function () {
 /***/ })
 
 /******/ });
-//# sourceMappingURL=app.a5bc15.js.map
+//# sourceMappingURL=app.a56cf0.js.map
