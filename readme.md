@@ -1,5 +1,29 @@
 # Usage
 
+## Demo
+
+![needle_game](D:\web测试\project_rewrite\rewrite_game\src\img\needle_game.png)
+
+设置的配置options:
+
+```javascript
+let needle_game = new Needle("#needl_game", {
+   canvasWidth: 600,
+   canvasHeight: 400,
+   passNum: 6,    // 六边形
+});
+
+needle_game.init();
+```
+
+
+
+
+
+
+
+
+
 ## Base
 
 html
