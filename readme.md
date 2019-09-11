@@ -18,7 +18,7 @@ needle_game.init();
 
 ## Base
 
-html
+html:
 
 ~~~html
 <html>
