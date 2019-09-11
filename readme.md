@@ -1,0 +1,50 @@
+# Usage
+
+## Base
+
+html
+
+~~~html
+<html>
+  ---
+<body>
+    <div id="needle_game"></div>
+</body>
+</html>
+~~~
+
+
+
+js:
+
+~~~javascript
+
+  let needle_game = new Needle("#needl_game");
+  
+  needle_game.init();
+~~~
+
+带上一些简单的配置
+
+js :
+
+~~~javascript
+let needle_game = new Needle("#needl_game", {
+  canvasWidth: 400,  //必填  单位px  盒子的大小
+  canvasHeight: 200, //必填  单位px
+  passNum: 6,      //选填  构成多边形 
+  rotateBallNum: 3,  //选填  原有的旋转小球数
+  insertBallNum: 5, //选填  要插入的小球数
+  rotateGap: Math.PI/15,  //选填  旋转幅度
+  rotateBallColor: "white",  ////选填  旋转小球的背景色
+  //rotateLineLength: 150,  //选填  旋转线的长度 不填时根据盒子的大小缩放
+  //rotateBallRange: 20,   //选填  旋转小球的半径 不填时根据盒子的大小缩放
+  rotateCanvasDirection: true  //true  切换关卡时画布是向下翻转; false  反之
+});
+  
+needle_game.init();
+~~~
+
+这个项目还可以对baseOptions.js文件增添默认配置项，
+
+关卡难度的增加可以通过增加 原有的小球数、要插入的小球数、旋转速度来实现

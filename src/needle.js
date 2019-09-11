@@ -98,6 +98,20 @@ export default class Needle
    
   }
   initGame() {
+
+    //关卡难度增加
+    //this.allLevels = [
+//      {
+//       rotateBallNum: 3,
+//       insertBallNum: 6
+//      },
+//      {
+//       rotateBallNum: 3,
+//       insertBallNum：7
+//       }
+//       ....
+//    ];
+    // this.currentLevel  确定当前关卡难度
     this.rotateBallNum = this._options.rotateBallNum;
     this.insertBallNum = this._options.insertBallNum;
 
