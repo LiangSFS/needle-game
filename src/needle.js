@@ -247,7 +247,7 @@ export default class Needle
     let elementResetBtn = this.createResetBtn();
      
     elementModal.appendChild(elementResetBtn);
-    if (!insertBallNum  && ( currentLevel > passGameNum )) {
+    if (!insertBallNum  && ( currentLevel < passGameNum )) {
       let elementNextBtn = this.createNextBtn();
       elementModal.appendChild(elementNextBtn);
     }

@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack",
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server --config webpack.config.server.js"
   },
   "author": "Liangshangfeng",
   "license": "ISC",

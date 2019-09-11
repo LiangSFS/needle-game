@@ -1,4 +1,3 @@
-
 const path = require("path");
 const webpack = require("webpack");
 
@@ -23,7 +22,7 @@ module.exports = {
       inject: true
     }),
     new ExtractTextPlugin('needle.css'),
-    new webpack.HotModuleReplacementPlugin()  
+      
   ],
   module: {
     rules: [
@@ -41,12 +40,6 @@ module.exports = {
         })
       }
     ]
-  },
-  devServer: {
-    open: true,
-    port: 4000,
-    publicPath: "/",
-    hot: true
   }
  
 }

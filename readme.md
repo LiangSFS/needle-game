@@ -16,14 +16,6 @@ let needle_game = new Needle("#needl_game", {
 needle_game.init();
 ```
 
-
-
-
-
-
-
-
-
 ## Base
 
 html
@@ -49,6 +41,21 @@ js:
 ~~~
 
 带上一些简单的配置
+
+```node
+//本地模拟借用 webpack devServer  服务器
+
+yarn   or   npm install          //安装依赖包
+
+yarn start  or npm start   //在浏览器 打开 http://localhost:4000/ 
+
+```
+
+
+
+
+
+
 
 js :
 
