@@ -2,7 +2,7 @@
 
 ## Demo
 
-![needle_game](.\rewrite_game\src\img\needle_game.png)
+![needle_game](/src/img/needle_game.png)
 
 设置的配置options:
 
