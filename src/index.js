@@ -7,7 +7,8 @@ import "./css/needle.css";
 let needle_game = new Needle("#needle_game", {
  canvasWidth: 600,
  canvasHeight: 400,
- passNum: 6
+ passNum: 6    //一共有六关
+ polygonEdgeNum: 6 //六边形
 });
 
 
