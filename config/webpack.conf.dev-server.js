@@ -2,9 +2,9 @@ const webpack = require("webpack");
 
 const merge = require("webpack-merge");
 
-const devConfig = require('./webpack.config.js');
+const baseConfig = require("./webpack.conf.base.js");
 
-module.exports = merge(devConfig, {
+module.exports = merge(baseConfig, {
  entry: "./src/index.dev-server.js",
  plugins: [
    new webpack.HotModuleReplacementPlugin()  

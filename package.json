@@ -5,8 +5,9 @@
   "main": "needle.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack",
-    "start": "webpack-dev-server --config webpack.config.server.js"
+    "dev": "webpack --config config/webpack.conf.dev.js",
+    "build": "webpack --config config/webpack.conf.pro.js",
+    "start": "webpack-dev-server --config config/webpack.conf.dev-server.js"
   },
   "author": "Liangshangfeng",
   "license": "ISC",
@@ -22,7 +23,8 @@
     "style-loader": "^1.0.0",
     "webpack": "^4.39.3",
     "webpack-cli": "^3.3.8",
-    "webpack-dev-server": "^3.8.0"
+    "webpack-dev-server": "^3.8.0",
+    "webpack-merge": "^4.2.2"
   },
   "dependencies": {
     "@babel/polyfill": "^7.6.0",

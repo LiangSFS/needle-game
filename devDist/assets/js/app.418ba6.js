@@ -4299,14 +4299,14 @@ function () {
 
       var newBgColor = this.randomBgColor(bgColors);
       var elementEachPass = document.createElement("canvas");
-      elementEachPass.className = 'each-pass';
+      elementEachPass.className = "each-pass";
       elementEachPass.width = canvasWidth;
       elementEachPass.height = canvasHeight;
       elementEachPass.style.cssText = _babel_runtime_corejs3_core_js_stable_instance_concat__WEBPACK_IMPORTED_MODULE_14___default()(_context2 = _babel_runtime_corejs3_core_js_stable_instance_concat__WEBPACK_IMPORTED_MODULE_14___default()(_context3 = "\n          background-color: ".concat(newBgColor, ";  \n          transform: rotateX( ")).call(_context3, i * innerAnglePolygons, "deg) translateZ(")).call(_context2, canvasHeight / (2 * tanValueInnerAngle), "px);\n          transition: transform 1s;\n       ");
       elementContentFragment.appendChild(elementEachPass);
     }
 
-    var elementModal = document.createElement('div'); //elementModal.className = 'needle-modal';
+    var elementModal = document.createElement("div"); //elementModal.className = "needle-modal";
 
     elementModal.setAttribute("id", "needle-modal");
     elementModal.style.cssText = _babel_runtime_corejs3_core_js_stable_instance_concat__WEBPACK_IMPORTED_MODULE_14___default()(_context4 = _babel_runtime_corejs3_core_js_stable_instance_concat__WEBPACK_IMPORTED_MODULE_14___default()(_context5 = "\n      padding-top: ".concat(canvasHeight / 2, "px;\n      transform:rotateX( ")).call(_context5, (this.currentLevel - 1) * innerAnglePolygons, "deg) translateZ( ")).call(_context4, canvasHeight / (2 * tanValueInnerAngle), "px);\n    ");
@@ -4359,8 +4359,8 @@ function () {
       // this.currentLevel  确定当前关卡难度
       this.rotateBallNum = this._options.rotateBallNum;
       this.insertBallNum = this._options.insertBallNum;
-      this.currentCvs = document.querySelectorAll('canvas.each-pass')[this.currentLevel - 1];
-      !this.resetStart && this.currentCvs.addEventListener('click', _babel_runtime_corejs3_core_js_stable_instance_bind__WEBPACK_IMPORTED_MODULE_12___default()(_context8 = this.clickInsertBall).call(_context8, this), false);
+      this.currentCvs = document.querySelectorAll("canvas.each-pass")[this.currentLevel - 1];
+      !this.resetStart && this.currentCvs.addEventListener("click", _babel_runtime_corejs3_core_js_stable_instance_bind__WEBPACK_IMPORTED_MODULE_12___default()(_context8 = this.clickInsertBall).call(_context8, this), false);
       this.createRotateBallData();
       this.drawRotateBall();
       this.drawCenterBall();
@@ -4395,7 +4395,7 @@ function () {
       var currentCvs = this.currentCvs;
       var currentCtx = currentCvs.getContext("2d");
       currentCtx.clearRect(0, 0, currentCvs.width, currentCvs.height);
-      currentCvs.removeEventListener('click', _babel_runtime_corejs3_core_js_stable_instance_bind__WEBPACK_IMPORTED_MODULE_12___default()(_context9 = this.clickInsertBall).call(_context9, this), false);
+      currentCvs.removeEventListener("click", _babel_runtime_corejs3_core_js_stable_instance_bind__WEBPACK_IMPORTED_MODULE_12___default()(_context9 = this.clickInsertBall).call(_context9, this), false);
       this.resetStart = false;
       this.currentLevel++;
       this.resetPublicInitOptions();
@@ -4419,7 +4419,7 @@ function () {
       var tanValueInnerAngle = Math.tan(innerAnglePolygons * Math.PI / 360); //转化为弧度的 一半多边形内角 的 正切值
 
       var canvasHeight = this._options.canvasHeight;
-      var elementCanvasCollection = document.querySelectorAll('canvas.each-pass');
+      var elementCanvasCollection = document.querySelectorAll("canvas.each-pass");
       var rotateCanvasDirection = this._options.rotateCanvasDirection;
       var currentLevel = this.currentLevel;
 
@@ -4435,7 +4435,7 @@ function () {
     key: "stopAnimation",
     value: function stopAnimation(insertBallNum) {
       var currentCvs = this.currentCvs;
-      var currentCtx = currentCvs.getContext('2d');
+      var currentCtx = currentCvs.getContext("2d");
 
       if (insertBallNum >= 0) {
         clearTimeout(this.stopTimer);
@@ -4453,7 +4453,7 @@ function () {
       var elementNextBtn = document.createElement("span");
       elementNextBtn.className = "nextBtn";
       elementNextBtn.innerText = "下一关";
-      elementNextBtn.addEventListener('click', _babel_runtime_corejs3_core_js_stable_instance_bind__WEBPACK_IMPORTED_MODULE_12___default()(_context12 = this.nextPassGame).call(_context12, this), false);
+      elementNextBtn.addEventListener("click", _babel_runtime_corejs3_core_js_stable_instance_bind__WEBPACK_IMPORTED_MODULE_12___default()(_context12 = this.nextPassGame).call(_context12, this), false);
       return elementNextBtn;
     }
   }, {
@@ -4464,7 +4464,7 @@ function () {
       var elementResetBtn = document.createElement("span");
       elementResetBtn.className = "resetBtn";
       elementResetBtn.innerText = "重新开始";
-      elementResetBtn.addEventListener('click', _babel_runtime_corejs3_core_js_stable_instance_bind__WEBPACK_IMPORTED_MODULE_12___default()(_context13 = this.resetGame).call(_context13, this), false);
+      elementResetBtn.addEventListener("click", _babel_runtime_corejs3_core_js_stable_instance_bind__WEBPACK_IMPORTED_MODULE_12___default()(_context13 = this.resetGame).call(_context13, this), false);
       return elementResetBtn;
     }
   }, {
@@ -4533,7 +4533,7 @@ function () {
     key: "clickInsertBall",
     value: function clickInsertBall() {
       var currentCvs = this.currentCvs;
-      var currentCtx = currentCvs.getContext('2d');
+      var currentCtx = currentCvs.getContext("2d");
       var ballGaps = this.rotateBallGaps;
       var insertBallNum = this.insertBallNum;
       var rotateLineLength = this._options.rotateLineLength;
@@ -4560,9 +4560,9 @@ function () {
 
       _babel_runtime_corejs3_core_js_stable_instance_fill__WEBPACK_IMPORTED_MODULE_9___default()(currentCtx).call(currentCtx);
 
-      currentCtx.font = fontSize + 'px impact';
-      currentCtx.fillStyle = 'black';
-      currentCtx.textAlign = 'center';
+      currentCtx.font = fontSize + "px impact";
+      currentCtx.fillStyle = "black";
+      currentCtx.textAlign = "center";
       currentCtx.textBaseline = "middle";
       currentCtx.fillText(insertBallNum, x, y);
       this.drawCenterBall();
@@ -4571,7 +4571,7 @@ function () {
     key: "createRotateBallData",
     value: function createRotateBallData() {
       var currentCvs = this.currentCvs;
-      var currentcurrentCtx = currentCvs.getContext('2d');
+      var currentcurrentCtx = currentCvs.getContext("2d");
       var crashRad = this.rotateBallCrashRad;
       var ballGaps = this.rotateBallGaps;
       var rotateBallNum = this.rotateBallNum;
@@ -4600,11 +4600,11 @@ function () {
     key: "drawCenterBall",
     value: function drawCenterBall() {
       var currentCvs = this.currentCvs;
-      var currentCtx = currentCvs.getContext('2d');
+      var currentCtx = currentCvs.getContext("2d");
       var centerBallRange = this.currentCvs.height / 12;
       currentCtx.beginPath();
       currentCtx.lineWidth = 2;
-      currentCtx.fillStyle = 'white';
+      currentCtx.fillStyle = "white";
       currentCtx.strokeStyle = "brown";
       currentCtx.arc(currentCvs.width / 2, currentCvs.height / 2, centerBallRange, 0, Math.PI * 2);
       currentCtx.closePath();
@@ -4612,9 +4612,9 @@ function () {
       _babel_runtime_corejs3_core_js_stable_instance_fill__WEBPACK_IMPORTED_MODULE_9___default()(currentCtx).call(currentCtx);
 
       currentCtx.stroke();
-      currentCtx.font = '30px impact';
-      currentCtx.fillStyle = 'black';
-      currentCtx.textAlign = 'center';
+      currentCtx.font = "30px impact";
+      currentCtx.fillStyle = "black";
+      currentCtx.textAlign = "center";
       currentCtx.textBaseline = "middle";
       currentCtx.fillText(this.currentLevel, currentCvs.width / 2, currentCvs.height / 2);
     }
@@ -4622,7 +4622,7 @@ function () {
     key: "drawRotateBall",
     value: function drawRotateBall(rotateBallColor) {
       var currentCvs = this.currentCvs;
-      var currentCtx = currentCvs.getContext('2d');
+      var currentCtx = currentCvs.getContext("2d");
       var ballGaps = this.rotateBallGaps;
       var rotateGap = this.rotateGap;
       var rotateLineLength = this._options.rotateLineLength;
@@ -4650,9 +4650,9 @@ function () {
         _babel_runtime_corejs3_core_js_stable_instance_fill__WEBPACK_IMPORTED_MODULE_9___default()(currentCtx).call(currentCtx);
 
         if (!ballGaps[i].originRotateBall) {
-          currentCtx.font = fontSize + 'px impact';
-          currentCtx.fillStyle = 'black';
-          currentCtx.textAlign = 'center';
+          currentCtx.font = fontSize + "px impact";
+          currentCtx.fillStyle = "black";
+          currentCtx.textAlign = "center";
           currentCtx.textBaseline = "middle";
           currentCtx.fillText(ballGaps[i].insertBallNO, x, y);
         }
@@ -4663,7 +4663,7 @@ function () {
     key: "drawUnderInsertBall",
     value: function drawUnderInsertBall() {
       var currentCvs = this.currentCvs;
-      var currentCtx = currentCvs.getContext('2d');
+      var currentCtx = currentCvs.getContext("2d");
       var underInsertBallNum = this.insertBallNum;
       var rotateLineLength = this._options.rotateLineLength;
       var rotateBallRange = this._options.rotateBallRange;
@@ -4678,9 +4678,9 @@ function () {
         _babel_runtime_corejs3_core_js_stable_instance_fill__WEBPACK_IMPORTED_MODULE_9___default()(currentCtx).call(currentCtx);
 
         currentCtx.closePath();
-        currentCtx.font = fontSize + 'px impact';
-        currentCtx.fillStyle = 'black';
-        currentCtx.textAlign = 'center';
+        currentCtx.font = fontSize + "px impact";
+        currentCtx.fillStyle = "black";
+        currentCtx.textAlign = "center";
         currentCtx.textBaseline = "middle";
         currentCtx.fillText(underInsertBallNum - i, currentCvs.width / 2, currentCvs.height / 2 + rotateLineLength + rotateBallRange * 2.5 * (i + 1));
       }
@@ -4691,7 +4691,7 @@ function () {
       var _this2 = this;
 
       var currentCvs = this.currentCvs;
-      var currentCtx = currentCvs.getContext('2d');
+      var currentCtx = currentCvs.getContext("2d");
 
       var animateCallBack = function animateCallBack() {
         currentCtx.clearRect(0, 0, currentCvs.width, currentCvs.height);
@@ -4717,4 +4717,4 @@ function () {
 /***/ })
 
 /******/ });
-//# sourceMappingURL=app.a56cf0.js.map
+//# sourceMappingURL=app.418ba6.js.map

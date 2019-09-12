@@ -40,7 +40,7 @@ js:
   needle_game.init();
 ~~~
 
-带上一些简单的配置
+
 
 ```node
 //本地模拟借用 webpack devServer  服务器
@@ -48,14 +48,11 @@ js:
 yarn   or   npm install          //安装依赖包
 
 yarn start  or npm start   //在浏览器 打开 http://localhost:4000/ 
-
 ```
 
 
 
-
-
-
+带上一些简单的配置
 
 js :
 
@@ -70,7 +67,7 @@ let needle_game = new Needle("#needl_game", {
   rotateBallColor: "white",  ////选填  旋转小球的背景色
   //rotateLineLength: 150,  //选填  旋转线的长度 不填时根据盒子的大小缩放
   //rotateBallRange: 20,   //选填  旋转小球的半径 不填时根据盒子的大小缩放
-  rotateCanvasDirection: true  //true  切换关卡时画布是向下翻转; false  反之
+  rotateCanvasDirection: true  //选填    true  切换关卡时画布是向下翻转; false  反之
 });
   
 needle_game.init();

@@ -1,3 +1,6 @@
+# My defined files
+dev-dist/
+
 # Logs
 logs
 *.log
