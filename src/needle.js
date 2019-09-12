@@ -5,14 +5,14 @@ const baseOptions = require("./baseOptions.js");
 export default class Needle 
 {
   constructor(gameWrap, options) {
-    const sizeRatioToRotateLineLength = 3.86;
-    const sizeRatioToRotateBallRange = 7.5;
+    const sizeRatio_minLengthToRotateLineLength = 3.86;
+    const sizeRatio_rotateLineLengthToRotateBallRange = 7.5;
     this._options = {...baseOptions, ...options};
 
     const minLength = Math.min(this._options.canvasWidth, this._options.canvasHeight);
 
-    this._options.rotateLineLength = this._options.rotateLineLength || minLength/sizeRatioToRotateLineLength;
-    this._options.rotateBallRange = this._options.rotateBallRange || this._options.rotateLineLength/sizeRatioToRotateBallRange;
+    this._options.rotateLineLength = this._options.rotateLineLength || minLength/sizeRatio_minLengthToRotateLineLength;
+    this._options.rotateBallRange = this._options.rotateBallRange || this._options.rotateLineLength/sizeRatio_rotateLineLengthToRotateBallRange;
 
     this.rotateBallGaps = [];
     this.resetStart = false;
@@ -39,10 +39,10 @@ export default class Needle
     //共有多少关， 就有多少canvas 元素
     let elementContentFragment = document.createDocumentFragment(); 
 
-    let innerAnglePolygons =  360 / this._options.passNum; //多边形内角 每一个面与其下一个面旋转过的角度
+    let innerAnglePolygons =  360 / this._options.polygonEdgeNum; //多边形内角 每一个面与其下一个面旋转过的角度
     let tanValueInnerAngle = Math.tan(innerAnglePolygons * Math.PI / 360)  //转化为弧度的 一半多边形内角 的 正切值
       
-    for (let i=0, len = this._options.passNum;i < len;i++) {
+    for (let i=0, len = this._options.polygonEdgeNum;i < len;i++) {
        let newBgColor = this.randomBgColor(bgColors);
        let elementEachPass = document.createElement("canvas");
        elementEachPass.className = "each-pass";
@@ -115,9 +115,9 @@ export default class Needle
     this.rotateBallNum = this._options.rotateBallNum;
     this.insertBallNum = this._options.insertBallNum;
 
-    this.currentCvs = document.querySelectorAll("canvas.each-pass")[this.currentLevel-1];
+    this.currentCvs = document.querySelectorAll("canvas.each-pass")[(this.currentLevel-1)%this._options.polygonEdgeNum];
     
-    !this.resetStart && this.currentCvs.addEventListener("click", this.clickInsertBall.bind(this), false);
+    ( this.currentLevel <= this._options.polygonEdgeNum) && !this.resetStart && this.currentCvs.addEventListener("click", this.clickInsertBall.bind(this), false);
 
     this.createRotateBallData();
     this.drawRotateBall();
@@ -152,11 +152,9 @@ export default class Needle
     let currentCtx = currentCvs.getContext("2d");
    
     currentCtx.clearRect(0,0,currentCvs.width,currentCvs.height);
-    currentCvs.removeEventListener("click", this.clickInsertBall.bind(this), false);
 
     this.resetStart = false;
     this.currentLevel++;
-
 
 
     this.resetPublicInitOptions();
@@ -175,7 +173,7 @@ export default class Needle
     this.initGame();
   }
   rotateCanvas() {
-     let innerAnglePolygons =  360 / this._options.passNum; //多边形内角 每一个面与其下一个面旋转过的角度
+     let innerAnglePolygons =  360 / this._options.polygonEdgeNum; //多边形内角 每一个面与其下一个面旋转过的角度
      let tanValueInnerAngle = Math.tan(innerAnglePolygons * Math.PI / 360);  //转化为弧度的 一半多边形内角 的 正切值
  
      
@@ -236,7 +234,7 @@ export default class Needle
 
     return elementResetBtn;
   }
-  createModalBtns(insertBallNum) {
+  createModalBtns(insertBallNum, isCrashed) {
 
     let elementModal = document.querySelector("#needle-modal");
     elementModal.className = "needle-modal";
@@ -247,7 +245,8 @@ export default class Needle
     let elementResetBtn = this.createResetBtn();
      
     elementModal.appendChild(elementResetBtn);
-    if (!insertBallNum  && ( currentLevel < passGameNum )) {
+    //  没有发生撞击  要插入的小球数量变为零  当前不是最后一关   
+    if (!isCrashed && ( insertBallNum === 0 ) && ( currentLevel < passGameNum )) {
       let elementNextBtn = this.createNextBtn();
       elementModal.appendChild(elementNextBtn);
     }
@@ -287,7 +286,7 @@ export default class Needle
             //console.log("error", insertBallNum, isCrashed);
             monitorStop(stop);
             isCrashed && this.stopAnimation(insertBallNum);
-            this.createModalBtns(insertBallNum);
+            this.createModalBtns(insertBallNum, isCrashed);
             
             return false;
 
