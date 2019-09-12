@@ -4,16 +4,16 @@ const baseOptions = require("./baseOptions.js");
 export default class Needle 
 {
   constructor(gameWrap, options) {
-    const sizeRatio_minLengthToRotateLineLength = 3.86;
-    const sizeRatio_rotateLineLengthToRotateBallRange = 7.5;
+    const sizeRatioMinLengthToRotateLineLength = 3.86;
+    const sizeRatioRotateLineLengthToRotateBallRange = 7.5;
     this._options = {...baseOptions, ...options}; //_options 作为Needle构造器的内置属性
 
     const minLength = Math.min(this._options.canvasWidth, this._options.canvasHeight);
 
-    this._options.rotateLineLength = this._options.rotateLineLength || minLength/sizeRatio_minLengthToRotateLineLength;
-    this._options.rotateBallRange = this._options.rotateBallRange || this._options.rotateLineLength/sizeRatio_rotateLineLengthToRotateBallRange;
+    this._options.rotateLineLength = this._options.rotateLineLength || minLength/sizeRatioMinLengthToRotateLineLength;
+    this._options.rotateBallRange = this._options.rotateBallRange || this._options.rotateLineLength/sizeRatioRotateLineLengthToRotateBallRange;
 
-    this.rotateBallGaps = [];  //所有小球位置属性的集合[{ xNum: ,yNum }, ...]
+    this.rotateBallGaps = [];  //与x轴正方向的夹角(在线长度已知时位置), 所有小球位置属性的集合[{ xNum: ,yNum }, ...]
 
     this.resetStart = false; //是重新开始在该canvas元素上的游戏还是第一次渲染
                 //标志判断目的：如果是第一次已经在该canvas 元素上绑定点击事件 后面不用重复绑定
@@ -42,7 +42,7 @@ export default class Needle
     let elementContentFragment = document.createDocumentFragment(); 
 
     let innerAnglePolygons =  360 / this._options.polygonEdgeNum; //多边形内角 每一个面与其下一个面旋转过的角度
-    let tanValueInnerAngle = Math.tan(innerAnglePolygons * Math.PI / 360)  //转化为弧度的 一半多边形内角 的 正切值
+    let tanValueInnerAngle = Math.tan(innerAnglePolygons * Math.PI / 360);  //转化为弧度的 一半多边形内角 的 正切值
       
     for (let i=0, len = this._options.polygonEdgeNum;i < len;i++) {
        let newBgColor = this.randomBgColor(bgColors);
@@ -149,7 +149,7 @@ export default class Needle
       allLevels.push(nextLevel);
       
     }
-    console.log(allLevels);
+    //console.log(allLevels);
   }
   initGame() {
 
@@ -315,13 +315,13 @@ export default class Needle
     let monitorFun = (function(){
        return  window.requestAnimationFrame       ||
                window.webkitRequestAnimationFrame ||
-               window.mozRequestAnimationFrame    
-    })();
+               window.mozRequestAnimationFrame;    
+    }());
 
     let monitorStop = (function() {
        return window.cancelAnimationFrame ||          
               window.mozCancelAnimationFrame;
-    })();
+    }());
     
     let CrashRad = this.rotateBallCrashRad;
     let stop;
@@ -331,10 +331,10 @@ export default class Needle
       for(let i = 0, len = ballGaps.length;i < len;i++) {
         for(let j=i+1;j<len;j++){
            let isCrashed = CrashRad >= Math.abs(ballGaps[i].ballGap%(Math.PI*2) - ballGaps[j].ballGap%(Math.PI*2));
-             if(isCrashed) return true;
+             if(isCrashed) { return true };
            }
         }
-    }
+    };
     let monitorCallBack = () => {
       //console.log(1);
           
@@ -353,7 +353,7 @@ export default class Needle
       }
       
       stop = monitorFun(monitorCallBack);
-    }
+    };
     
     stop = monitorFun(monitorCallBack);
   }
@@ -408,16 +408,18 @@ export default class Needle
     let rotateLineLength = this._options.rotateLineLength;
 
     let randEachGap;
+    let isCorrectGap;
     for(let i = 0, len = rotateBallNum;i < len; i++) {
       do{
           randEachGap = Math.random() * Math.PI * 2;
+          isCorrectGap = ballGaps.some(item => Math.abs(item.ballGap-randEachGap) < crashRad);//产生的球的位置 不与已存在的球相撞
 
-        } while(ballGaps.some(item => Math.abs(item.ballGap-randEachGap) < crashRad));
+        } while(isCorrectGap);
 
       //console.log(currentcurrentCvs,currentcurrentCtx);
 
        let x = currentCvs.width/2+Math.cos(randEachGap)*rotateLineLength;
-	   let y = currentCvs.height/2+Math.sin(randEachGap)*rotateLineLength;
+       let y = currentCvs.height/2+Math.sin(randEachGap)*rotateLineLength;
        ballGaps.push({
          "xNum": x,
          "yNum": y,
@@ -464,18 +466,17 @@ export default class Needle
 
     //console.log(ballGaps, this.insertBallNum);    
     let fontSize = rotateBallRange * .8;
-    for(let i = 0, len = ballGaps.length;i < len;i++){
-        
-        ballGaps[i].ballGap += rotateGap;
+    ballGaps.length && ballGaps.forEach((ball, i) => {
+      ball.ballGap += rotateGap;
         currentCtx.beginPath();
         currentCtx.lineWidth = 2;
         currentCtx.strokeStyle = rotateBallColor;
         currentCtx.fillStyle = rotateBallColor;
-        let x = currentCvs.width/2+Math.cos(ballGaps[i].ballGap)*rotateLineLength;
-        let y = currentCvs.height/2+Math.sin(ballGaps[i].ballGap)*rotateLineLength;
+        let x = currentCvs.width/2+Math.cos(ball.ballGap)*rotateLineLength;
+        let y = currentCvs.height/2+Math.sin(ball.ballGap)*rotateLineLength;
         
-        ballGaps[i].xNum = x;
-        ballGaps[i].yNum = y;
+        ball.xNum = x;
+        ball.yNum = y;
     
         currentCtx.moveTo(currentCvs.width/2, currentCvs.height/2);
         currentCtx.lineTo(x, y);
@@ -483,15 +484,14 @@ export default class Needle
         currentCtx.stroke();
         currentCtx.arc(x, y, rotateBallRange, 0, Math.PI*2);
         currentCtx.fill();
-        if(!ballGaps[i].originRotateBall){
+        if(!ball.originRotateBall){
             currentCtx.font = fontSize+"px impact";
             currentCtx.fillStyle = "black";
             currentCtx.textAlign = "center";
             currentCtx.textBaseline = "middle";
-            currentCtx.fillText(ballGaps[i].insertBallNO, x, y);
+            currentCtx.fillText(ball.insertBallNO, x, y);
         }
-    }
-
+    });
     //console.log(this.rotateBallGaps);
 
   }
