@@ -28,7 +28,7 @@ canvas.each-pass {
 }
 
 
-.nextBtn,.resetBtn{
+.next-btn,.reset-btn{
     display:inline-block;
 	opacity:0;
 	transform:translate(-50%, -90%);
@@ -41,11 +41,11 @@ canvas.each-pass {
 	cursor: pointer;
 	animation:btnAnimate linear .6s forwards;
 }
-.nextBtn{
+.next-btn{
   margin-left:4px;
 }
 @keyframes btnAnimate {
-   form {
+   from {
 	transform:translateY(-90%);
 	opacity:0;
    }
