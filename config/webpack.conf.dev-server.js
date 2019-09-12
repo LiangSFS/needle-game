@@ -15,4 +15,4 @@ module.exports = merge(baseConfig, {
     publicPath: "/",
     hot: true
   }
-})
+});

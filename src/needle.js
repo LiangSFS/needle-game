@@ -274,7 +274,7 @@ export default class Needle
   createNextBtn () {
      let elementNextBtn = document.createElement("span");
 
-     elementNextBtn.className = "nextBtn";
+     elementNextBtn.className = "next-btn";
      elementNextBtn.innerText = "下一关";
 
      elementNextBtn.addEventListener("click", this.nextPassGame.bind(this), false);
@@ -284,7 +284,7 @@ export default class Needle
   createResetBtn() {
     let elementResetBtn = document.createElement("span");
     
-    elementResetBtn.className = "resetBtn";
+    elementResetBtn.className = "reset-btn";
     elementResetBtn.innerText = "重新开始";
 
     elementResetBtn.addEventListener("click", this.resetGame.bind(this), false);

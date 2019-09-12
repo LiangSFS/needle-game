@@ -13,4 +13,4 @@ module.exports = {
   //rotateLineLength: 150,
   //rotateBallRange: 20,
   rotateCanvasDirection: true  //true  向下翻转; false  反之
-}
+};
