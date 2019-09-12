@@ -7,14 +7,14 @@
 设置的配置options:
 
 ```javascript
-let needle_game = new Needle("#needl_game", {
+let needleGame = new Needle("#needl_game", {
    canvasWidth: 600,
    canvasHeight: 400,
    passNum: 6    //一共有六关
    polygonEdgeNum: 6   //六边形
 });
 
-needle_game.init();
+needleGame.init();
 ```
 
 ## Base
@@ -25,7 +25,7 @@ html:
 <html>
   ---
 <body>
-    <div id="needle_game"></div>
+    <div id="needle-game"></div>
 </body>
 </html>
 ~~~
@@ -36,9 +36,9 @@ js:
 
 ~~~javascript
 
-  let needle_game = new Needle("#needl_game");
+  let needleGame = new Needle("#needl-game");
   
-  needle_game.init();
+  needleGame.init();
 ~~~
 
 
@@ -58,7 +58,7 @@ yarn start  or npm start   //在浏览器 打开 http://localhost:4000/
 js :
 
 ~~~javascript
-let needle_game = new Needle("#needl_game", {
+let needleGame = new Needle("#needl-game", {
   canvasWidth: 400,  //必填  单位px  盒子的大小
   canvasHeight: 200, //必填  单位px
   bootFrequerncy: 3, //选填  每隔 bootFrequerncy 关 难度增加一点
@@ -73,7 +73,7 @@ let needle_game = new Needle("#needl_game", {
   rotateCanvasDirection: true  //选填    true  切换关卡时画布是向下翻转; false  反之
 });
   
-needle_game.init();
+needleGame.init();
 ~~~
 
 这个项目还可以对baseOptions.js文件增添默认配置项，
