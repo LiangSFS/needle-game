@@ -52,7 +52,7 @@ yarn start  or npm start   //在浏览器 打开 http://localhost:4000/
 
 
 
-带上一些简单的配置
+带上所有（暂定）的配置
 
 js :
 
