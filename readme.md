@@ -80,9 +80,9 @@ needle_game.init();
 
 old_files 文件夹中 存放着 重构以前的项目文件 (js css 均是内联形式 在html文件中)
 
-//关卡难度的增加可以通过增加 原有的小球数、要插入的小球数、旋转速度来实现
+9.11  //关卡难度的增加可以通过增加 原有的小球数、要插入的小球数、旋转速度来实现
 
-关卡难度递增 方法bootLevelDifficulty() (在Needle 对象中 方法) 已实现
+9.12  关卡难度递增 方法bootLevelDifficulty() (在Needle 对象中 方法) 已实现
 
 ​    增加配置项 bootFrequerncy ： 难度增加的频率
 
