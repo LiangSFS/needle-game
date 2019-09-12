@@ -1,21 +1,22 @@
 "use strict";
 const baseOptions = require("./baseOptions.js");
 
-
 export default class Needle 
 {
   constructor(gameWrap, options) {
     const sizeRatio_minLengthToRotateLineLength = 3.86;
     const sizeRatio_rotateLineLengthToRotateBallRange = 7.5;
-    this._options = {...baseOptions, ...options};
+    this._options = {...baseOptions, ...options}; //_options 作为Needle构造器的内置属性
 
     const minLength = Math.min(this._options.canvasWidth, this._options.canvasHeight);
 
     this._options.rotateLineLength = this._options.rotateLineLength || minLength/sizeRatio_minLengthToRotateLineLength;
     this._options.rotateBallRange = this._options.rotateBallRange || this._options.rotateLineLength/sizeRatio_rotateLineLengthToRotateBallRange;
 
-    this.rotateBallGaps = [];
-    this.resetStart = false;
+    this.rotateBallGaps = [];  //所有小球位置属性的集合[{ xNum: ,yNum }, ...]
+
+    this.resetStart = false; //是重新开始在该canvas元素上的游戏还是第一次渲染
+                //标志判断目的：如果是第一次已经在该canvas 元素上绑定点击事件 后面不用重复绑定
     
     this.currentLevel = 1;
     let canvasWidth = this._options.canvasWidth;
@@ -36,7 +37,8 @@ export default class Needle
     //所有canvas元素背景色
     let bgColors = [];
 
-    //共有多少关， 就有多少canvas 元素
+    ////共有多少关， 就有多少canvas 元素
+    //   passNum      polygonEdgeNum    两者配置已分离
     let elementContentFragment = document.createDocumentFragment(); 
 
     let innerAnglePolygons =  360 / this._options.polygonEdgeNum; //多边形内角 每一个面与其下一个面旋转过的角度
@@ -94,8 +96,60 @@ export default class Needle
   }
   init() {
     this.initOptions();
+
+    this.bootLevelDifficulty();
+
     this.initGame();
    
+  }
+  bootLevelDifficulty() {
+    let firstLevel = {
+      rotateBallNum: this._options.rotateBallNum,
+      insertBallNum: this._options.insertBallNum
+    };
+    let passGameNum = this._options.passNum;
+    let rotateBallRange = this._options.rotateBallRange;
+    let rotateLineLength = this._options.rotateLineLength;
+
+    let eachRotateBallRad = 2 * Math.asin(rotateBallRange/rotateLineLength); //每一个旋转小球占用的整个圆的弧度
+    let rotateBallCrashRad = this.rotateBallCrashRad;
+
+    //剩余空间
+    let restSpaceRad = Math.PI * 2 - (eachRotateBallRad * firstLevel.rotateBallNum + rotateBallCrashRad *  + firstLevel.rotateBallNum);
+
+    let extraMaxInsertBallNum = Math.floor(restSpaceRad/(eachRotateBallRad + rotateBallCrashRad * 2));
+
+
+    let allLevels = this.allLevels = [];
+    
+    let bootFrequerncy = this._options.bootFrequerncy; //每隔bootFrequerncy  关 难度增加一点
+    
+    let halfMaxInsertBallNum = Math.floor(extraMaxInsertBallNum/2);
+
+    allLevels.push(firstLevel);
+    for(let i = 0, len = passGameNum;i<len;i++) {
+      if(!extraMaxInsertBallNum) { 
+         console.log("已经是最高难度");
+         break;
+      }
+      
+
+      let isBootFreq = !((i + 1)%bootFrequerncy);
+      //console.log(i, halfMaxInsertBallNum);
+      let isChangeBootStyle = !!(i > halfMaxInsertBallNum); 
+
+      //console.log(isBootFreq, isChangeBootStyle);
+      let nextLevel = { 
+        rotateBallNum:(isBootFreq && isChangeBootStyle)? allLevels[i].rotateBallNum + 1: allLevels[i].rotateBallNum,
+        insertBallNum: (isBootFreq && !isChangeBootStyle)? allLevels[i].insertBallNum + 1: allLevels[i].insertBallNum
+      }
+      !isBootFreq && halfMaxInsertBallNum++;  //难度没有增加 随i值递增
+      isBootFreq && extraMaxInsertBallNum--; //当难度增加时 才是增加了小球的时候
+      
+      allLevels.push(nextLevel);
+      
+    }
+    console.log(allLevels);
   }
   initGame() {
 
@@ -112,8 +166,12 @@ export default class Needle
 //       ....
 //    ];
     // this.currentLevel  确定当前关卡难度
-    this.rotateBallNum = this._options.rotateBallNum;
-    this.insertBallNum = this._options.insertBallNum;
+    let allLevels = this.allLevels;
+    let maxLevelLength = allLevels.length;
+    let currentLevel = this.currentLevel;
+
+    this.rotateBallNum = currentLevel > maxLevelLength?allLevels[maxLevelLength - 1].rotateBallNum : allLevels[currentLevel - 1].rotateBallNum;
+    this.insertBallNum = currentLevel > maxLevelLength?allLevels[maxLevelLength - 1].insertBallNum : allLevels[currentLevel - 1].insertBallNum;
 
     this.currentCvs = document.querySelectorAll("canvas.each-pass")[(this.currentLevel-1)%this._options.polygonEdgeNum];
     
