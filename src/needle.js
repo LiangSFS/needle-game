@@ -142,7 +142,7 @@ export default class Needle
       let nextLevel = { 
         rotateBallNum:(isBootFreq && isChangeBootStyle)? allLevels[i].rotateBallNum + 1: allLevels[i].rotateBallNum,
         insertBallNum: (isBootFreq && !isChangeBootStyle)? allLevels[i].insertBallNum + 1: allLevels[i].insertBallNum
-      }
+      };
       !isBootFreq && halfMaxInsertBallNum++;  //难度没有增加 随i值递增
       isBootFreq && extraMaxInsertBallNum--; //当难度增加时 才是增加了小球的时候
       
@@ -331,7 +331,7 @@ export default class Needle
       for(let i = 0, len = ballGaps.length;i < len;i++) {
         for(let j=i+1;j<len;j++){
            let isCrashed = CrashRad >= Math.abs(ballGaps[i].ballGap%(Math.PI*2) - ballGaps[j].ballGap%(Math.PI*2));
-             if(isCrashed) { return true };
+             if(isCrashed) { return true; }
            }
         }
     };
@@ -409,10 +409,11 @@ export default class Needle
 
     let randEachGap;
     let isCorrectGap;
+    let isCorrectGapFun = (item) => Math.abs(item.ballGap-randEachGap) < crashRad;
     for(let i = 0, len = rotateBallNum;i < len; i++) {
       do{
           randEachGap = Math.random() * Math.PI * 2;
-          isCorrectGap = ballGaps.some(item => Math.abs(item.ballGap-randEachGap) < crashRad);//产生的球的位置 不与已存在的球相撞
+          isCorrectGap = ballGaps.some(isCorrectGapFun);//产生的球的位置 不与已存在的球相撞
 
         } while(isCorrectGap);
 

@@ -1,6 +1,6 @@
 import Needle from "./needle.js";
 
-import './css/needle.css';
+import "./css/needle.css";
 
 let needleGame = new Needle("#needle-game", {
  canvasWidth: 600,

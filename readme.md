@@ -7,7 +7,7 @@
 设置的配置options:
 
 ```javascript
-let needleGame = new Needle("#needl_game", {
+let needleGame = new Needle("#needl-game", {
    canvasWidth: 600,
    canvasHeight: 400,
    passNum: 6    //一共有六关
@@ -19,7 +19,7 @@ needleGame.init();
 
 ## Base
 
-html:
+HTML文件(在给定的一个DOM元素盒子中渲染游戏画布):
 
 ~~~html
 <html>
@@ -30,9 +30,7 @@ html:
 </html>
 ~~~
 
-
-
-js:
+JavaScript文件(调用该对象，初始化游戏)：
 
 ~~~javascript
 
@@ -41,21 +39,17 @@ js:
   needleGame.init();
 ~~~
 
-
+本地模拟借用 Webpack中 devServer服务器
 
 ```node
-//本地模拟借用 webpack devServer  服务器
+//对应文件路径下 打开命令行工具
 
 yarn   or   npm install          //安装依赖包
 
 yarn start  or npm start   //在浏览器 打开 http://localhost:4000/ 
 ```
 
-
-
-带上所有（暂定）的配置
-
-js :
+JavaScript文件 (带上所有（暂定）的配置)：
 
 ~~~javascript
 let needleGame = new Needle("#needl-game", {
@@ -80,9 +74,9 @@ needleGame.init();
 
 old_files 文件夹中 存放着 重构以前的项目文件 (js css 均是内联形式 在html文件中)
 
-9.11  //关卡难度的增加可以通过增加 原有的小球数、要插入的小球数、旋转速度来实现
+19.9.11  //关卡难度的增加可以通过增加 原有的小球数、要插入的小球数、旋转速度来实现
 
-9.12  关卡难度递增 方法bootLevelDifficulty() (在Needle 对象中 方法) 已实现
+19.9.12  关卡难度递增 方法bootLevelDifficulty() (在Needle 对象中 方法) 已实现
 
 ​    增加配置项 bootFrequerncy ： 难度增加的频率
 
