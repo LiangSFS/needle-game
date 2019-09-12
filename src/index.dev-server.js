@@ -2,7 +2,7 @@ import Needle from "./needle.js";
 
 import './css/needle.css';
 
-let needle_game = new Needle("#needleGame", {
+let needleGame = new Needle("#needle-game", {
  canvasWidth: 600,
  canvasHeight: 400,
  passNum: 20    //一共有六关
@@ -10,5 +10,5 @@ let needle_game = new Needle("#needleGame", {
 });
 
 
-needle_game.init();
+needleGame.init();
 //console.log(needle_game);
