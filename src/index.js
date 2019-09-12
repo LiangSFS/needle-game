@@ -1,7 +1,7 @@
 
 import Needle from "./needle.js";
 
-import './css/needle.css';
+import "./css/needle.css";
 
 //export default Needle;
 let needle_game = new Needle("#needle_game", {

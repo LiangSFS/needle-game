@@ -45,7 +45,7 @@ export default class Needle
     for (let i=0, len = this._options.passNum;i < len;i++) {
        let newBgColor = this.randomBgColor(bgColors);
        let elementEachPass = document.createElement("canvas");
-       elementEachPass.className = 'each-pass';
+       elementEachPass.className = "each-pass";
        
        elementEachPass.width = canvasWidth ;
        elementEachPass.height = canvasHeight ;
@@ -57,8 +57,8 @@ export default class Needle
        elementContentFragment.appendChild(elementEachPass);
     } 
     
-    let elementModal = document.createElement('div');
-       //elementModal.className = 'needle-modal';
+    let elementModal = document.createElement("div");
+       //elementModal.className = "needle-modal";
 
     elementModal.setAttribute("id", "needle-modal");
 
@@ -115,9 +115,9 @@ export default class Needle
     this.rotateBallNum = this._options.rotateBallNum;
     this.insertBallNum = this._options.insertBallNum;
 
-    this.currentCvs = document.querySelectorAll('canvas.each-pass')[this.currentLevel-1];
+    this.currentCvs = document.querySelectorAll("canvas.each-pass")[this.currentLevel-1];
     
-    !this.resetStart && this.currentCvs.addEventListener('click', this.clickInsertBall.bind(this), false);
+    !this.resetStart && this.currentCvs.addEventListener("click", this.clickInsertBall.bind(this), false);
 
     this.createRotateBallData();
     this.drawRotateBall();
@@ -152,7 +152,7 @@ export default class Needle
     let currentCtx = currentCvs.getContext("2d");
    
     currentCtx.clearRect(0,0,currentCvs.width,currentCvs.height);
-    currentCvs.removeEventListener('click', this.clickInsertBall.bind(this), false);
+    currentCvs.removeEventListener("click", this.clickInsertBall.bind(this), false);
 
     this.resetStart = false;
     this.currentLevel++;
@@ -181,7 +181,7 @@ export default class Needle
      
      let canvasHeight = this._options.canvasHeight;
 
-     let elementCanvasCollection = document.querySelectorAll('canvas.each-pass');
+     let elementCanvasCollection = document.querySelectorAll("canvas.each-pass");
   
      let rotateCanvasDirection = this._options.rotateCanvasDirection;
      let  currentLevel = this.currentLevel;
@@ -203,7 +203,7 @@ export default class Needle
 
   stopAnimation(insertBallNum) {
     let currentCvs = this.currentCvs;
-    let currentCtx = currentCvs.getContext('2d');
+    let currentCtx = currentCvs.getContext("2d");
 
     
     if(insertBallNum >= 0) {
@@ -221,7 +221,7 @@ export default class Needle
      elementNextBtn.className = "nextBtn";
      elementNextBtn.innerText = "下一关";
 
-     elementNextBtn.addEventListener('click', this.nextPassGame.bind(this), false);
+     elementNextBtn.addEventListener("click", this.nextPassGame.bind(this), false);
 
      return elementNextBtn;
   }
@@ -231,7 +231,7 @@ export default class Needle
     elementResetBtn.className = "resetBtn";
     elementResetBtn.innerText = "重新开始";
 
-    elementResetBtn.addEventListener('click', this.resetGame.bind(this), false);
+    elementResetBtn.addEventListener("click", this.resetGame.bind(this), false);
     
 
     return elementResetBtn;
@@ -303,7 +303,7 @@ export default class Needle
 
   clickInsertBall() {
     let currentCvs = this.currentCvs;
-    let currentCtx = currentCvs.getContext('2d');
+    let currentCtx = currentCvs.getContext("2d");
   
     let ballGaps = this.rotateBallGaps;
     let insertBallNum = this.insertBallNum;
@@ -332,9 +332,9 @@ export default class Needle
     currentCtx.arc(currentCvs.width/2,currentCvs.height/2+rotateLineLength,rotateBallRange,0,Math.PI*2);
     currentCtx.fill();
     
-    currentCtx.font = fontSize+'px impact';
-    currentCtx.fillStyle = 'black';
-    currentCtx.textAlign = 'center';
+    currentCtx.font = fontSize+"px impact";
+    currentCtx.fillStyle = "black";
+    currentCtx.textAlign = "center";
     currentCtx.textBaseline = "middle";
     currentCtx.fillText(insertBallNum, x, y);
    
@@ -343,7 +343,7 @@ export default class Needle
 
   createRotateBallData() {
     let currentCvs = this.currentCvs;
-    let currentcurrentCtx = currentCvs.getContext('2d');
+    let currentcurrentCtx = currentCvs.getContext("2d");
 
     let crashRad = this.rotateBallCrashRad;
     let ballGaps = this.rotateBallGaps;
@@ -374,29 +374,29 @@ export default class Needle
   
   drawCenterBall() {
     let currentCvs = this.currentCvs;
-    let currentCtx = currentCvs.getContext('2d');
+    let currentCtx = currentCvs.getContext("2d");
     
     let centerBallRange = this.currentCvs.height/12;
 
     currentCtx.beginPath();
 	currentCtx.lineWidth = 2;
-	currentCtx.fillStyle = 'white';
+	currentCtx.fillStyle = "white";
 	currentCtx.strokeStyle = "brown";
     currentCtx.arc(currentCvs.width/2,currentCvs.height/2,centerBallRange,0,Math.PI*2);
     currentCtx.closePath();
     currentCtx.fill();
     currentCtx.stroke();
     
-    currentCtx.font = '30px impact';
-    currentCtx.fillStyle = 'black';
-    currentCtx.textAlign = 'center';
+    currentCtx.font = "30px impact";
+    currentCtx.fillStyle = "black";
+    currentCtx.textAlign = "center";
     currentCtx.textBaseline = "middle";
     currentCtx.fillText(this.currentLevel,currentCvs.width/2,currentCvs.height/2);
   }
 
   drawRotateBall(rotateBallColor) {
     let currentCvs = this.currentCvs;
-    let currentCtx = currentCvs.getContext('2d');
+    let currentCtx = currentCvs.getContext("2d");
 
     let ballGaps = this.rotateBallGaps;
     let rotateGap = this.rotateGap;
@@ -427,9 +427,9 @@ export default class Needle
         currentCtx.arc(x, y, rotateBallRange, 0, Math.PI*2);
         currentCtx.fill();
         if(!ballGaps[i].originRotateBall){
-            currentCtx.font = fontSize+'px impact';
-            currentCtx.fillStyle = 'black';
-            currentCtx.textAlign = 'center';
+            currentCtx.font = fontSize+"px impact";
+            currentCtx.fillStyle = "black";
+            currentCtx.textAlign = "center";
             currentCtx.textBaseline = "middle";
             currentCtx.fillText(ballGaps[i].insertBallNO, x, y);
         }
@@ -440,7 +440,7 @@ export default class Needle
   }
   drawUnderInsertBall() {
     let currentCvs = this.currentCvs;
-    let currentCtx = currentCvs.getContext('2d');
+    let currentCtx = currentCvs.getContext("2d");
 
     let underInsertBallNum = this.insertBallNum;
 
@@ -457,9 +457,9 @@ export default class Needle
       currentCtx.fill();
       currentCtx.closePath();
       
-      currentCtx.font = fontSize+'px impact';
-      currentCtx.fillStyle = 'black';
-      currentCtx.textAlign = 'center';
+      currentCtx.font = fontSize+"px impact";
+      currentCtx.fillStyle = "black";
+      currentCtx.textAlign = "center";
       currentCtx.textBaseline = "middle";
       currentCtx.fillText(underInsertBallNum-i,currentCvs.width/2,currentCvs.height/2+rotateLineLength+rotateBallRange*2.5*(i+1));
     }
@@ -468,7 +468,7 @@ export default class Needle
 
   drawAnimtion() {
     let currentCvs = this.currentCvs;
-    let currentCtx = currentCvs.getContext('2d');
+    let currentCtx = currentCvs.getContext("2d");
    
     
 
