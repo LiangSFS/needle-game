@@ -9,7 +9,7 @@ module.exports = merge({
   mode: "development",
   output: {
     path: path.resolve(__dirname, "../devDist"),
-    filename: "assets/js/app.[hash:6].js"
+    filename: "static/js/app.[hash:6].js"
   },
   plugins: [
      new CleanWebpackPlugin()  
