@@ -6,7 +6,7 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = merge({
   devtool: "source-map",
-  mode: "development",
+  mode: process.env.NODE_ENV,  //在命令行赋值  借用cross-env 包跨脚本传值
   output: {
     path: path.resolve(__dirname, "../dist"),
     filename: "static/js/app.[hash:6].js"
