@@ -8,8 +8,6 @@
     "dev": "cross-env process.env.NODE_ENV=development webpack --config config/webpack.conf.dev.js",
     "build": "cross-env process.env.NODE_ENV=production  webpack --config config/webpack.conf.pro.js",
     "start": "cross-env process.env.NODE_ENV=development webpack-dev-server --config config/webpack.conf.dev-server.js",
-    "predeploy": "yarn build",
-    "deploy": "gh-pages -d build"
   },
   "homepage": "https://liangsfs.github.io/needle-game/",
   "repository": {
@@ -40,7 +38,6 @@
     "@babel/polyfill": "^7.6.0",
     "@babel/runtime": "^7.6.0",
     "@babel/runtime-corejs3": "^7.6.0",
-    "core-js": "3",
-    "js-yaml": "3.13.1"
+    "core-js": "3"
   }
 }
