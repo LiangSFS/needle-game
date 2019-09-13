@@ -76,23 +76,40 @@ export default class Needle
 
     //console.log(elementWrap);
   }
-
+  //将css3属性 rbg() 转化为 十六进制
+  transformRGBToHex (newBgColor) {
+        let HexCode = "#";
+        let HaxAlls = "0123456789ABCDEF";
+        //每个色值运算
+        let eachComputedHex = (eachColor) => {
+           return HaxAlls.charAt(Math.floor(eachColor/16)) + HaxAlls.charAt(eachColor%16);
+        };
+          //累加器
+        let accumulator = (acc, cur) => {
+          return acc += eachComputedHex(cur);
+        };
+        //色值字符串 转化为 数组
+        let colors = newBgColor.slice(4, newBgColor.length).split(", ");//[r, g, b]色值数组
+        return colors.reduce(accumulator, HexCode);
+  }
   //canvas dom元素的背景色
   randomBgColor(allBgColor) {
     let newBgColor;
     do
     {
-      let r = Math.random() * 255;
-      let g = Math.random() * 255;
-      let b = Math.random() * 255;
+      let r = Math.round(Math.random() * 255);
+      let g = Math.round(Math.random() * 255);
+      let b = Math.round(Math.random() * 255);
 
       newBgColor = `rgb(${r}, ${g}, ${b})`;
     }
     while (allBgColor.includes(newBgColor));
+
+
    
     allBgColor.push(newBgColor);
     
-    return newBgColor;
+    return this.transformRGBToHex(newBgColor);
   }
   init() {
     this.initOptions();
