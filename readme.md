@@ -101,3 +101,5 @@ old_files 文件夹中 存放着 重构以前的项目文件 (js css 均是内�
    根据已给的数据计算小球极限数量值  ，增加原有小球或插入小球数
 
 - 19.9.13  将打包好的静态页面放入 gitHub pages 上
+
+  ​        添加 postcss-loader    在加上 process.env.NODE_ENV 脚本设置
