@@ -2,8 +2,9 @@ const path = require("path");
 const webpack = require("webpack");
 
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+
+const { cssMinimize }  = require("./webpack.utils.js");
 module.exports = {
   entry: "./src/index.js",
   plugins: [
@@ -28,7 +29,11 @@ module.exports = {
         include: path.resolve(__dirname, "../src"),
         use: ExtractTextPlugin.extract({
           fallback: "style-loader",
-          use: "css-loader"
+          use: [
+            { loader: "css-loader", options: { minimize: cssMinimize(),   importLoaders: 1 } 
+            },
+            "postcss-loader"
+          ]
         })
       }
     ]
