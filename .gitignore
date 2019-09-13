@@ -1,5 +1,10 @@
 # My defined files
 dist/
+config/
+old_files/
+src/
+*.md
+
 
 # Logs
 logs
