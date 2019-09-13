@@ -13,7 +13,7 @@ module.exports = {
       inject: true
     }),
     new ExtractTextPlugin({
-      filename: "assets/css/needle.css"  
+      filename: "static/css/needle.css"  
     }),
   ],
   module: {
