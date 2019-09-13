@@ -41,6 +41,7 @@
     "@babel/polyfill": "^7.6.0",
     "@babel/runtime": "^7.6.0",
     "@babel/runtime-corejs3": "^7.6.0",
-    "core-js": "3"
+    "core-js": "3",
+    "js-yaml": "3.13.1"
   }
 }
