@@ -103,3 +103,9 @@ old_files 文件夹中 存放着 重构以前的项目文件 (js css 均是内�
 - 19.9.13  将打包好的静态页面放入 gitHub pages 上
 
   ​        添加 postcss-loader    在加上 process.env.NODE_ENV 脚本设置
+
+    将画布的颜色css3 从 rgb() 转化为 十六进制  兼容  UC（brower）浏览器  
+
+  ​     实测以上的UC 浏览器 以及  QQ浏览器、chrome 浏览器、firefox 浏览器 
+
+​              均可运行
