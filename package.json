@@ -1,5 +1,5 @@
 {
-  "name": "canvas_game",
+  "name": "needle-game",
   "version": "0.9.10",
   "description": "a canvas game module",
   "main": "needle.js",
@@ -8,6 +8,10 @@
     "dev": "webpack --config config/webpack.conf.dev.js",
     "build": "webpack --config config/webpack.conf.pro.js",
     "start": "webpack-dev-server --config config/webpack.conf.dev-server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LiangSFS/needle-game.git"
   },
   "author": "Liangshangfeng",
   "license": "ISC",
