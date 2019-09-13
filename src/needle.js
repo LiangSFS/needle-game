@@ -46,7 +46,9 @@ export default class Needle
       
     for (let i=0, len = this._options.polygonEdgeNum;i < len;i++) {
        let newBgColor = this.randomBgColor(bgColors);
+       
        let elementEachPass = document.createElement("canvas");
+       console.log(newBgColor);
        elementEachPass.className = "each-pass";
        
        elementEachPass.width = canvasWidth ;
