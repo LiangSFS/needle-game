@@ -27,6 +27,7 @@
     "cross-env": "^5.2.1",
     "css-loader": "0.28.11",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "gh-pages": "^2.1.1",
     "html-webpack-plugin": "^3.2.0",
     "postcss-loader": "^3.0.0",
     "postcss-preset-env": "^6.7.0",
@@ -40,7 +41,6 @@
     "@babel/polyfill": "^7.6.0",
     "@babel/runtime": "^7.6.0",
     "@babel/runtime-corejs3": "^7.6.0",
-    "core-js": "3",
-    "js-yaml": "3.13.1"
+    "core-js": "3"
   }
 }
