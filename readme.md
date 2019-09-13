@@ -78,8 +78,8 @@ let needleGame = new Needle("#needl-game", {
   insertBallNum: 5, //选填  要插入的小球数
   rotateGap: Math.PI/15,  //选填  旋转幅度
   rotateBallColor: "white",  ////选填  旋转小球的背景色
-  //rotateLineLength: 150,
-  //rotateBallRange: 20,
+  //rotateLineLength: 150,  //选填  旋转线的长度  不填时根据容器尺寸缩放
+  //rotateBallRange: 20,   //选填  旋转小球的半径  不填时根据旋转线的长度缩放
   rotateCanvasDirection: true  //true  向下翻转; false  反之
 });
   
