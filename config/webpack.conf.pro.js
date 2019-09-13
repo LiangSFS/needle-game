@@ -7,7 +7,7 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 module.exports = merge({
   mode: "production",
   output: {
-    path: path.resolve(__dirname, "../dist"),
+    path: path.resolve(__dirname, "../build"),
     publicPath: "/",  //dist目录下的文件放在服务器/根目录下中才能加载静态资源
     filename: "static/js/app.[hash:6].js"
   },
