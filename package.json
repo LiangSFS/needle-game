@@ -7,8 +7,11 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack --config config/webpack.conf.dev.js",
     "build": "webpack --config config/webpack.conf.pro.js",
-    "start": "webpack-dev-server --config config/webpack.conf.dev-server.js"
+    "start": "webpack-dev-server --config config/webpack.conf.dev-server.js",
+    "predeploy":"yarn build",
+    "deploy":"gh-pages -d build"
   },
+  "homepage":"https://liangsfs.github.io/needle-game/",
   "repository": {
     "type": "git",
     "url": "https://github.com/LiangSFS/needle-game.git"
@@ -23,6 +26,7 @@
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.2.0",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "gh-pages": "^2.1.1",
     "html-webpack-plugin": "^3.2.0",
     "style-loader": "^1.0.0",
     "webpack": "^4.39.3",

@@ -8,7 +8,7 @@ module.exports = merge({
   devtool: "source-map",
   mode: "development",
   output: {
-    path: path.resolve(__dirname, "../devDist"),
+    path: path.resolve(__dirname, "../dist"),
     filename: "static/js/app.[hash:6].js"
   },
   plugins: [
