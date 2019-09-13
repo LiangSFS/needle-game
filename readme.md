@@ -6,7 +6,7 @@
 
 设置的配置options:
 
-[https://liangsfs.github.io/needle-game/] 使用Webpack已打包的资源
+https://liangsfs.github.io/needle-game/ (使用Webpack已打包的资源)
 
 ```javascript
 //   该资源设置的配置 --- src/index.js
